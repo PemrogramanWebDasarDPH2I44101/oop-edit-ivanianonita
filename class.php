@@ -4,9 +4,9 @@ class Kalkulator{
 
     public function Kalkulator(){
         $servername = "localhost";
-        $username   = "admin";
-        $password   = "1234";
-        $db         = "WebDasar";       
+        $username   = "root";
+        $password   = "";
+        $db         = "oop";       
         $this->conn = mysqli_connect($servername, $username, 
                            $password, $db);                        
     }    
@@ -28,6 +28,18 @@ class Kalkulator{
         $sql    = "SELECT * FROM siswa";        
         return mysqli_query($this->conn, $sql);
 
+    }
+    public function update(){
+         $angka1 = $_POST['input1'];
+         $angka2 = $_POST['input2'];
+         $sql    = "UPDATE siswa SET nama='$angka1',nim='$angka2'";
+    
+        mysqli_query($this->conn, $sql);        
+
+    }
+    public function view_data(){
+        $sql="SELECT * FROM siswa";
+        return mysqli_query($this->conn,$sql);
     }
 }
 $operasi = $_POST["operasi"];
